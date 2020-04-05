@@ -11,9 +11,10 @@ html, body {
   * ============================================ */
 
 body {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'VT323', monospace;
   font-size: 16px;
-  background: #fff;
+  background: #101010;
+  color: $red;
 }
 
 h1, .title-1 { @include title-1; }

@@ -2,10 +2,126 @@
  * lay-out
  */
 
+.list {
+
+}
+
+.list--horizontal {
+  display: flex;
+  justify-content: center;
+}
+
+.section {
+
+}
+
 /*
  * components
  */
 
+.header {
+ text-align: center;
+ width: 100%;
+ margin-bottom: 120px;
+ .nav {
+   .list {
+     &__item {
+       width: 170px;
+       margin: 20px 34px;
+       transition: all 0.4s ease-out;
+       cursor: pointer;
+       &:hover {
+         color: $red--light;
+        .clickable {
+          &__corner {
+            border-color: $blue--light;
+          }
+          &__corner--left-up {
+            top: -10px;
+            left: 0;
+            animation: cornerLeftUp 0.7s infinite;
+            animation-timing-function: ease-out;
+          }
+          &__corner--left-bottom {
+            bottom: -10px;
+            left: 0;
+            animation: cornerLeftBottom 0.7s infinite;
+            animation-timing-function: ease-out;
+          }
+          &__corner--right-up {
+            top: -10px;
+            right: 0;
+            animation: cornerRightUp 0.7s infinite;
+            animation-timing-function: ease-out;
+          }
+          &__corner--right-bottom {
+            bottom: -10px;
+            right: 0;
+            animation: cornerRightBottom 0.7s infinite;
+            animation-timing-function: ease-out;
+          }
+        }
+       }
+     }
+   }
+ }
+}
+
+.is-active {
+  color: $red--light;
+  opacity: 1;
+  .clickable {
+    &__corner {
+      border-color: $blue--light;
+    }
+  }
+}
+
+
+
+.portfolio {
+ text-align: center;
+}
+
 /*
  * styling
  */
+
+ .clickable {
+  cursor: pointer;
+  position: relative;
+  &__corner {
+    position: absolute;
+    border: 4px solid $blue;
+    height: 11px;
+    width: 11px;
+    transition: all 0.4s ease-out;
+  }
+  &__corner--left-up, &__corner--left-bottom, &__corner--right-up, &__corner--right-bottom {
+    transition: all 0.3s ease-out;
+  }
+  &__corner--left-up {
+    top: -10px;
+    left: 0;
+    border-right: 0;
+    border-bottom: 0;
+  }
+  &__corner--left-bottom {
+    bottom: -10px;
+    left: 0;
+    border-right: 0;
+    border-top: 0;
+  }
+  &__corner--right-up {
+    top: -10px;
+    right: 0;
+    border-left: 0;
+    border-bottom: 0;
+  }
+  &__corner--right-bottom {
+    bottom: -10px;
+    right: 0;
+    border-left: 0;
+    border-top: 0;
+  }
+}

@@ -2,6 +2,27 @@
 // Colors
 // =============================================
 
+$red: #a22633;
+$red--light: #e43b44;
+$blue: #006b9a;
+$blue--light: #0099db;
+
 // =============================================
 // Typography
 // =============================================
+
+@font-face {
+  font-family: 'Futura PT Condensed Extra Bold';
+  src: url('../fonts/FuturaPTCond-ExtraBoldObl.woff2') format('woff2'),
+      url('../fonts/FuturaPTCond-ExtraBoldObl.woff') format('woff');
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Futura PT Condensed Medium';
+  src: url('../fonts/FuturaPTCond-MediumObl.woff2') format('woff2'),
+      url('../fonts/FuturaPTCond-MediumObl.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+}
