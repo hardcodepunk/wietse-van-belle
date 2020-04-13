@@ -2,12 +2,9 @@
  * lay-out
  */
 
-.list {
-
-}
-
 .list--horizontal {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
@@ -24,60 +21,93 @@
  width: 100%;
  margin-bottom: 120px;
  .nav {
-   .list {
-     &__item {
-       width: 170px;
-       margin: 20px 34px;
-       transition: all 0.4s ease-out;
-       cursor: pointer;
-       &:hover {
-         color: $red--light;
-        .clickable {
-          &__corner {
-            border-color: $blue--light;
-          }
-          &__corner--left-up {
-            top: -10px;
-            left: 0;
-            animation: cornerLeftUp 0.7s infinite;
-            animation-timing-function: ease-out;
-          }
-          &__corner--left-bottom {
-            bottom: -10px;
-            left: 0;
-            animation: cornerLeftBottom 0.7s infinite;
-            animation-timing-function: ease-out;
-          }
-          &__corner--right-up {
-            top: -10px;
-            right: 0;
-            animation: cornerRightUp 0.7s infinite;
-            animation-timing-function: ease-out;
-          }
-          &__corner--right-bottom {
-            bottom: -10px;
-            right: 0;
-            animation: cornerRightBottom 0.7s infinite;
-            animation-timing-function: ease-out;
+    .list {
+      &__item {
+      width: 170px;
+      margin: 20px 34px;
+      transition: all 0.4s ease-out;
+      cursor: pointer;
+        &:hover {
+          color: $red--light;
+          .bordered {
+            &__corner {
+              border-color: $blue--light;
+            }
+            &__corner--left-up {
+              top: -10px;
+              left: 0;
+              animation: cornerLeftUp 0.7s infinite;
+              animation-timing-function: ease-out;
+            }
+            &__corner--left-bottom {
+              bottom: -10px;
+              left: 0;
+              animation: cornerLeftBottom 0.7s infinite;
+              animation-timing-function: ease-out;
+            }
+            &__corner--right-up {
+              top: -10px;
+              right: 0;
+              animation: cornerRightUp 0.7s infinite;
+              animation-timing-function: ease-out;
+            }
+            &__corner--right-bottom {
+              bottom: -10px;
+              right: 0;
+              animation: cornerRightBottom 0.7s infinite;
+              animation-timing-function: ease-out;
+            }
           }
         }
-       }
-     }
-   }
- }
+      }
+    }
+  }
 }
 
 .is-active {
   color: $red--light;
   opacity: 1;
-  .clickable {
+  .bordered {
     &__corner {
       border-color: $blue--light;
     }
   }
 }
 
+.gallery {
+  position: relative;
+  width: 100%;
+  padding: 0 20%;
+  margin-bottom: 200px;
+  &__title {
+    margin-bottom: 40px;
+  }
+  .list {
+    margin: 0 -20px;
+  }
+  &__item {
+    width: 25%;
+    margin: 20px 34px;
+    text-align: left;
+    &__title {
+      margin: 40px 0 30px;
+    }
+    &__caption {
 
+    }
+    &__img {
+      width: 100%;
+      max-height: 100%;
+      position: relative;
+      padding: 30%;
+      &:before {
+        content: '';
+        float: left;
+        padding-top: 66.66%;
+      }
+    }
+  }
+}
 
 .portfolio {
  text-align: center;
@@ -87,7 +117,7 @@
  * styling
  */
 
- .clickable {
+ .bordered {
   cursor: pointer;
   position: relative;
   &__corner {

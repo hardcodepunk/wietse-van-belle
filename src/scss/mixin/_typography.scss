@@ -38,18 +38,16 @@
 
 @mixin title-4 {
   margin: 0;
-  margin-bottom: 0.7em;
-  font-size: 1.5em;
-  font-weight: 200;
-  line-height: 1.2em;
+  font-size: 27px;
   text-transform: uppercase;
   text-rendering: optimizeLegibility;
+  color: $blue;
 }
 
 @mixin title-5 {
   margin: 0;
-  font-size: 1.4em;
-  font-weight: 200;
-  line-height: 1.75em;
+  font-size: 27px;
+  line-height: 1;
   text-rendering: optimizeLegibility;
+  color: $red;
 }
