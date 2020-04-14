@@ -8,8 +8,12 @@
   justify-content: center;
 }
 
-.section {
-
+.tab {
+ display: none;
+ text-align: center;
+ &.is-active {
+   display: block;
+ }
 }
 
 /*
@@ -17,16 +21,24 @@
  */
 
 .header {
- text-align: center;
- width: 100%;
- margin-bottom: 120px;
- .nav {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 120px;
+  .nav {
     .list {
       &__item {
-      width: 170px;
-      margin: 20px 34px;
-      transition: all 0.4s ease-out;
-      cursor: pointer;
+        width: 170px;
+        margin: 20px 34px;
+        transition: all 0.4s ease-out;
+        cursor: pointer;
+        &.is-active {
+          color: $red--light;
+          .bordered {
+            &__corner {
+              border-color: $blue--light;
+            }
+          }
+        }
         &:hover {
           color: $red--light;
           .bordered {
