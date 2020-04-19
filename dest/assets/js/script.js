@@ -23,12 +23,12 @@ for (var i = 0; i < tabSelectors.length; i++) {
       this.classList.add('is-active');
     }
 
-    if (tab.classList.contains('is-active')) {
+    if (tab.classList.contains('is-active-tab')) {
     } else {
       for (var i = 0; i < tabs.length; i++) {
-        tabs[i].classList.remove('is-active');
+        tabs[i].classList.remove('is-active-tab');
       }
-      tab.classList.add('is-active');
+      tab.classList.add('is-active-tab');
     }
   });
 }
