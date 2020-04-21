@@ -93,10 +93,10 @@
 }
 
 .cta {
-  margin: 100px 0;
+  margin: 40px 0 70px;
   display: inline-block;
   cursor: pointer;
-  padding: 0 20px 0 77px;
+  padding: 0 20px 0;
   &__text {
     color: $green;
     margin: 0;
@@ -169,7 +169,7 @@
 .header {
   text-align: center;
   width: 100%;
-  margin-bottom: 120px;
+  margin-bottom: 70px;
   .nav {
     .list {
       &__item {
@@ -369,6 +369,9 @@
       }
     }
   }
+  .cta {
+    padding: 0 20px 0 77px;
+  }
 }
 
 .about__social__anchor:hover {
@@ -395,5 +398,12 @@
       animation: cornerRightBottomSmall 0.7s infinite;
       animation-timing-function: ease-out;
     }
+  }
+}
+
+.contact {
+  &__illustration {
+    margin: 0 auto 40px;
+    width: 70px;
   }
 }
