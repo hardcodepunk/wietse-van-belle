@@ -96,7 +96,7 @@
   margin: 40px 0 70px;
   display: inline-block;
   cursor: pointer;
-  padding: 0 20px 0;
+  padding: 0 20px 0 77px;
   &__text {
     color: $green;
     margin: 0;
@@ -274,7 +274,7 @@
       }
       .bordered {
         &__corner {
-          color: $blue--light;
+          border-color: $blue--light;
         }
         &__corner--left-up {
           top: -10px;
@@ -368,9 +368,6 @@
         border-top: 0;
       }
     }
-  }
-  .cta {
-    padding: 0 20px 0 77px;
   }
 }
 
