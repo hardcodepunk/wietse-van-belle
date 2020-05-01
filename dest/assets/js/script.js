@@ -42,20 +42,46 @@ document.addEventListener('DOMContentLoaded',function(event){
 
 
   /*
-   * close gallery pop up
+   * gallery
    */
 
   (function() {
-    'use strict';
 
+    var bodyEl = document.querySelector('.body');
+    var galleryItems = document.querySelectorAll('.gallery__item');
     var btnClosePopUp = document.querySelector('#close-pop-up');
-    var popUp = document.querySelector('.gallery-pop-up');
 
-    function closePopUp() {
-      console.log("click");
-      popUp.classList.remove('is-active');
+    // activate popup
+    function openPopUp() {
+      bodyEl.classList.add('has-active-popup');
     }
 
+    for (var i = 0; i < galleryItems.length; i++) {
+      galleryItems[i].addEventListener('click', openPopUp);
+    };
+
+
+    // deactivate popup
+    function closePopUp() {
+      bodyEl.classList.remove('has-active-popup');
+    }
+
+    // click close button
     btnClosePopUp.addEventListener('click', closePopUp);
   })();
+
+  // click gallery item
+   // open overlay
+   // replace img src/title/text with clicked items img src/title/text
+
+  // if overlay active
+    // click left button
+      // get previous gallery item
+      // replace img src/title/text with clicked items img src/title/text
+    // click right button
+      // get next gallery item
+      // replace img src/title/text with clicked items img src/title/text
+
+
+
 });

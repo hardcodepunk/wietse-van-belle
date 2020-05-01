@@ -16,6 +16,14 @@
  }
 }
 
+.body {
+  &.has-active-popup {
+    .gallery-pop-up {
+      display: flex;
+    }
+  }
+}
+
 /*
  * styling
  */
@@ -417,9 +425,6 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  &.is-active {
-    display: flex;
-  }
   &__image {
     margin-bottom: 70px;
   }
@@ -464,10 +469,18 @@
   }
   &__nav--left-button {
     left: 5%;
+    transition: all 0.4s ease-out;
+    &:hover {
+      left: 4%;
+    }
   }
   &__nav--right-button {
     right: 5%;
     transform: scale(-1, 1);
+    transition: all 0.4s ease-out;
+    &:hover {
+      right: 4%;
+    }
   }
   &__exit-btn {
     position: absolute;
@@ -497,5 +510,4 @@
       }
     }
   }
-
 }
