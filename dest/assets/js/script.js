@@ -49,21 +49,43 @@ document.addEventListener('DOMContentLoaded',function(event){
 
     var bodyEl = document.querySelector('.body');
     var galleryItems = document.querySelectorAll('.gallery__item');
+    var popUp = document.getElementById('pop-up');
     var btnClosePopUp = document.querySelector('#close-pop-up');
+
+    var projection = document.getElementById('projection');
+    console.log(projection + "projection el");
 
     // activate popup
     function openPopUp() {
+      // open overlay
       bodyEl.classList.add('has-active-popup');
+      this.classList.add('is-being-displayed');
+
+      // replace popup img src with clicked item img src
+      projection.src = this.getAttribute('data-img');
+
+      // replace popup title/text with clicked item title/text
+      var itemTitle = this.querySelector('.gallery__item__title').innerHTML;
+      var itemCaption = this.querySelector('.gallery__item__caption').innerHTML;
+      var popUpTitle = popUp.querySelector('.gallery-pop-up__title');
+      var popUpCaption = popUp.querySelector('.gallery-pop-up__caption');
+
+      popUpTitle.innerHTML = itemTitle;
+      popUpCaption.innerHTML = itemCaption;
+
     }
 
+    // add click event onto gallery items
     for (var i = 0; i < galleryItems.length; i++) {
       galleryItems[i].addEventListener('click', openPopUp);
     };
 
-
     // deactivate popup
     function closePopUp() {
       bodyEl.classList.remove('has-active-popup');
+      for (var i = 0; i < galleryItems.length; i++) {
+        galleryItems[i].classList.remove('is-being-displayed');
+      };
     }
 
     // click close button
