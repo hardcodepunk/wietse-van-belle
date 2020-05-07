@@ -94,10 +94,10 @@ document.addEventListener('DOMContentLoaded',function(event){
     var btnPrevious = document.getElementById('gallery__btn-previous');
     var btnNext = document.getElementById('gallery__btn-next');
 
-    var displayedItem = document.querySelector('li.gallery__item.is-being-displayed');
+    //var displayedItem = document.querySelector('li.gallery__item.is-being-displayed');
 
     var itemsArray = Array.prototype.slice.call(galleryItems);
-    var currentLocation = itemsArray.indexOf(displayedItem) + 1;
+    var currentLocation = 1;
     var totalItems = galleryItems.length;
     var paginationElementTotal = document.getElementById('gallery-pop-up__pagination__total');
     var paginationElementCurrent = document.getElementById('gallery-pop-up__pagination__current');
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded',function(event){
 
       galleryBtns[i].addEventListener('click', function() {
 
-        //var displayedItem = document.querySelector('li.gallery__item.is-being-displayed');
+        var displayedItem = document.querySelector('li.gallery__item.is-being-displayed');
         console.log("click");
 
         // prev btn clicked
@@ -119,6 +119,12 @@ document.addEventListener('DOMContentLoaded',function(event){
 
           currentLocation -= 1;
           paginationElementCurrent.innerHTML = currentLocation;
+
+          // update gallery item status (hide/show by removing/adding class)
+          for (var i = 0; i < galleryItems.length; i++) {
+            galleryItems[i].classList.remove('is-being-displayed');
+          };
+          galleryItems[currentLocation].classList.add('is-being-displayed');
 
           console.log(currentLocation);
 
@@ -133,8 +139,15 @@ document.addEventListener('DOMContentLoaded',function(event){
         } else if ( this == btnNext ) {
           console.log("click next");
 
-          currentLocation += 1;
-          paginationElementCurrent.innerHTML = currentLocation;
+
+
+          console.log(galleryItems[currentLocation] + "current location in gallery items");
+
+          // update gallery item status (hide/show by removing/adding class)
+          for (var i = 0; i < galleryItems.length; i++) {
+            galleryItems[i].classList.remove('is-being-displayed');
+          };
+          galleryItems[currentLocation].classList.add('is-being-displayed');
 
           console.log(currentLocation);
 
@@ -143,6 +156,8 @@ document.addEventListener('DOMContentLoaded',function(event){
             console.log("equal or greater than than total so should be hidden");
           } else {
             btnPrevious.classList.remove('is-hidden');
+            currentLocation += 1;
+            paginationElementCurrent.innerHTML = currentLocation;
           }
 
         }
