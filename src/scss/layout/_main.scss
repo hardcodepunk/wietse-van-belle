@@ -437,6 +437,9 @@
     @include translateY();
     display: flex;
     cursor: pointer;
+    &.is-hidden {
+      display: none;
+    }
     &__triangle {
       position: relative;
       margin-right: 25px;
@@ -510,5 +513,9 @@
         background: $red--light;
       }
     }
+  }
+  &__pagination {
+    @include translateX();
+    bottom: 40px;
   }
 }

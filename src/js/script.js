@@ -88,6 +88,69 @@ document.addEventListener('DOMContentLoaded',function(event){
       };
     }
 
+    //pop up nav
+
+    var galleryBtns = document.querySelectorAll('.gallery-pop-up__nav');
+    var btnPrevious = document.getElementById('gallery__btn-previous');
+    var btnNext = document.getElementById('gallery__btn-next');
+
+    var displayedItem = document.querySelector('li.gallery__item.is-being-displayed');
+
+    var itemsArray = Array.prototype.slice.call(galleryItems);
+    var currentLocation = itemsArray.indexOf(displayedItem) + 1;
+    var totalItems = galleryItems.length;
+    var paginationElementTotal = document.getElementById('gallery-pop-up__pagination__total');
+    var paginationElementCurrent = document.getElementById('gallery-pop-up__pagination__current');
+
+    // initiate count in pagination
+    paginationElementCurrent.innerHTML = currentLocation;
+    paginationElementTotal.innerHTML = totalItems;
+
+    for (var i = 0; i < galleryBtns.length; i++) {
+
+      galleryBtns[i].addEventListener('click', function() {
+
+        //var displayedItem = document.querySelector('li.gallery__item.is-being-displayed');
+        console.log("click");
+
+        // prev btn clicked
+        if (this == btnPrevious) {
+          console.log("click prev");
+
+          currentLocation -= 1;
+          paginationElementCurrent.innerHTML = currentLocation;
+
+          console.log(currentLocation);
+
+          if (currentLocation <= 1) {
+            btnPrevious.classList.add('is-hidden');
+            console.log("smaller than 1 so should be hidden");
+          } else {
+            btnNext.classList.remove('is-hidden');
+          }
+
+        // next btn clicked
+        } else if ( this == btnNext ) {
+          console.log("click next");
+
+          currentLocation += 1;
+          paginationElementCurrent.innerHTML = currentLocation;
+
+          console.log(currentLocation);
+
+          if (currentLocation >= totalItems) {
+            btnNext.classList.add('is-hidden');
+            console.log("equal or greater than than total so should be hidden");
+          } else {
+            btnPrevious.classList.remove('is-hidden');
+          }
+
+        }
+      });
+
+      console.log(currentLocation + "current location");
+    }
+
     // click close button
     btnClosePopUp.addEventListener('click', closePopUp);
   })();
@@ -106,4 +169,59 @@ document.addEventListener('DOMContentLoaded',function(event){
 
 
 
+
 });
+
+/* for (var i = 0; i < galleryBtns.length; i++) {
+
+  galleryBtns[i].addEventListener('click', function() {
+
+    var displayedItem = document.querySelector('li.gallery__item.is-being-displayed');
+
+    // prev btn clicked
+    if (this == btnPrevious) {
+      console.log("click prev");
+
+      var previousItem = displayedItem.previousElementSibling;
+
+      displayedItem.classList.remove('is-being-displayed');
+      previousItem.classList.add('is-being-displayed');
+
+      //sliderProjection.src = previousItem.querySelector('.shop-item__gallery__item__visual__img').src;
+
+      if (previousItem.previousElementSibling == null) {
+        btnPrevious.classList.add('is-hidden');
+      }
+
+      if (btnNext.classList.contains('is-hidden')) {
+        btnNext.classList.remove('is-hidden');
+      }
+
+      currentLocation -= 1;
+
+      //paginationElementCurrent.innerHTML = currentLocation;
+
+    // next btn clicked
+    } else if ( this == btnNext ) {
+      console.log("click next");
+
+      var nextItem = displayedItem.nextElementSibling;
+
+      displayedItem.classList.remove('is-being-displayed');
+      nextItem.classList.add('is-being-displayed');
+
+      //sliderProjection.src = nextItem.querySelector('.shop-item__gallery__item__visual__img').src;
+
+      if ( nextItem.nextElementSibling == null ) {
+        btnNext.classList.add('is-hidden');
+      }
+
+      if (btnPrevious.classList.contains('is-hidden')) {
+        btnPrevious.classList.remove('is-hidden');
+      }
+
+      currentLocation += 1;
+      //paginationElementCurrent.innerHTML = currentLocation;
+    }
+  });
+} */
