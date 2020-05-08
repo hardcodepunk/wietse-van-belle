@@ -69,7 +69,14 @@ document.addEventListener('DOMContentLoaded',function(event){
 
       if (currentLocation >= totalItems) {
         btnNext.classList.add('is-hidden');
-        console.log("equal or greater than than total so should be hidden");
+        btnPrevious.classList.remove('is-hidden');
+      } else if (currentLocation <= 0) {
+        btnPrevious.classList.add('is-hidden');
+        btnNext.classList.remove('is-hidden');
+      } else {
+        for (var i = 0; i < galleryBtns.length; i++) {
+          galleryBtns[i].classList.remove('is-hidden');
+        }
       }
 
       // replace popup img src with clicked item img src
@@ -144,7 +151,7 @@ document.addEventListener('DOMContentLoaded',function(event){
 
           if (currentLocation <= 0) {
             btnPrevious.classList.add('is-hidden');
-            console.log("smaller than 1 so should be hidden");
+            console.log("smaller than minimum so should be hidden");
           } else {
             btnNext.classList.remove('is-hidden');
           }
@@ -156,22 +163,23 @@ document.addEventListener('DOMContentLoaded',function(event){
           console.log("click next");
 
           console.log(currentLocation + " before process");
-
+          currentLocation += 1;
+          paginationElementCurrent.innerHTML = currentLocation;
 
           if (currentLocation >= totalItems) {
             btnNext.classList.add('is-hidden');
-            console.log("equal or greater than than total so should be hidden");
+            console.log("equal or greater than total so should be hidden");
           } else {
             btnPrevious.classList.remove('is-hidden');
-            currentLocation += 1;
-            paginationElementCurrent.innerHTML = currentLocation;
-
-            // update gallery item status (hide/show by removing/adding class)
-            for (var i = 0; i < galleryItems.length; i++) {
-              galleryItems[i].classList.remove('is-being-displayed');
-            };
-            galleryItems[currentLocation].classList.add('is-being-displayed');
           }
+
+          // update gallery item status (hide/show by removing/adding class)
+          for (var i = 0; i < galleryItems.length; i++) {
+            galleryItems[i].classList.remove('is-being-displayed');
+          };
+          galleryItems[currentLocation].classList.add('is-being-displayed');
+
+
 
           console.log(currentLocation + " after process");
         }
