@@ -47,6 +47,8 @@ document.addEventListener('DOMContentLoaded',function(event){
 
   (function() {
 
+    var currentLocation = 1;
+
     var bodyEl = document.querySelector('.body');
     var galleryItems = document.querySelectorAll('.gallery__item');
     var popUp = document.getElementById('pop-up');
@@ -61,6 +63,15 @@ document.addEventListener('DOMContentLoaded',function(event){
       bodyEl.classList.add('has-active-popup');
       this.classList.add('is-being-displayed');
 
+      var currentLocation = itemsArray.indexOf(this);
+
+      paginationElementCurrent.innerHTML = currentLocation;
+
+      if (currentLocation >= totalItems) {
+        btnNext.classList.add('is-hidden');
+        console.log("equal or greater than than total so should be hidden");
+      }
+
       // replace popup img src with clicked item img src
       projection.src = this.getAttribute('data-img');
 
@@ -72,6 +83,8 @@ document.addEventListener('DOMContentLoaded',function(event){
 
       popUpTitle.innerHTML = itemTitle;
       popUpCaption.innerHTML = itemCaption;
+
+      console.log(currentLocation);
 
     }
 
@@ -97,8 +110,7 @@ document.addEventListener('DOMContentLoaded',function(event){
     //var displayedItem = document.querySelector('li.gallery__item.is-being-displayed');
 
     var itemsArray = Array.prototype.slice.call(galleryItems);
-    var currentLocation = 1;
-    var totalItems = galleryItems.length;
+    var totalItems = galleryItems.length - 1;
     var paginationElementTotal = document.getElementById('gallery-pop-up__pagination__total');
     var paginationElementCurrent = document.getElementById('gallery-pop-up__pagination__current');
 
@@ -110,8 +122,12 @@ document.addEventListener('DOMContentLoaded',function(event){
 
       galleryBtns[i].addEventListener('click', function() {
 
+        console.log(currentLocation + " before assigned by displ item");
+
         var displayedItem = document.querySelector('li.gallery__item.is-being-displayed');
-        console.log("click");
+        var currentLocation = itemsArray.indexOf(displayedItem);
+
+        console.log(currentLocation + " after assigned by displ item");
 
         // prev btn clicked
         if (this == btnPrevious) {
@@ -126,30 +142,21 @@ document.addEventListener('DOMContentLoaded',function(event){
           };
           galleryItems[currentLocation].classList.add('is-being-displayed');
 
-          console.log(currentLocation);
-
-          if (currentLocation <= 1) {
+          if (currentLocation <= 0) {
             btnPrevious.classList.add('is-hidden');
             console.log("smaller than 1 so should be hidden");
           } else {
             btnNext.classList.remove('is-hidden');
           }
 
+          console.log(currentLocation);
+
         // next btn clicked
         } else if ( this == btnNext ) {
           console.log("click next");
 
+          console.log(currentLocation + " before process");
 
-
-          console.log(galleryItems[currentLocation] + "current location in gallery items");
-
-          // update gallery item status (hide/show by removing/adding class)
-          for (var i = 0; i < galleryItems.length; i++) {
-            galleryItems[i].classList.remove('is-being-displayed');
-          };
-          galleryItems[currentLocation].classList.add('is-being-displayed');
-
-          console.log(currentLocation);
 
           if (currentLocation >= totalItems) {
             btnNext.classList.add('is-hidden');
@@ -158,12 +165,17 @@ document.addEventListener('DOMContentLoaded',function(event){
             btnPrevious.classList.remove('is-hidden');
             currentLocation += 1;
             paginationElementCurrent.innerHTML = currentLocation;
+
+            // update gallery item status (hide/show by removing/adding class)
+            for (var i = 0; i < galleryItems.length; i++) {
+              galleryItems[i].classList.remove('is-being-displayed');
+            };
+            galleryItems[currentLocation].classList.add('is-being-displayed');
           }
 
+          console.log(currentLocation + " after process");
         }
       });
-
-      console.log(currentLocation + "current location");
     }
 
     // click close button
