@@ -158,6 +158,24 @@ document.addEventListener('DOMContentLoaded',function(event){
 
           console.log(currentLocation);
 
+          ///////////////
+          var displayedItem = document.querySelector('li.gallery__item.is-being-displayed');
+
+          // replace popup img src with clicked item img src
+          projection.src = displayedItem.getAttribute('data-img');
+
+          console.log(projection.src + "project src");
+          // replace popup title/text with clicked item title/text
+          var itemTitle = displayedItem.querySelector('.gallery__item__title').innerHTML;
+          console.log(itemTitle + "itemTitle");
+
+          var itemCaption = displayedItem.querySelector('.gallery__item__caption').innerHTML;
+          var popUpTitle = popUp.querySelector('.gallery-pop-up__title');
+          var popUpCaption = popUp.querySelector('.gallery-pop-up__caption');
+
+          popUpTitle.innerHTML = itemTitle;
+          popUpCaption.innerHTML = itemCaption;
+
         // next btn clicked
         } else if ( this == btnNext ) {
           console.log("click next");
@@ -182,7 +200,26 @@ document.addEventListener('DOMContentLoaded',function(event){
 
 
           console.log(currentLocation + " after process");
+          //////////
+          var displayedItem = document.querySelector('li.gallery__item.is-being-displayed');
+
+          // replace popup img src with clicked item img src
+          projection.src = displayedItem.getAttribute('data-img');
+
+          console.log(projection.src + "project src");
+          // replace popup title/text with clicked item title/text
+          var itemTitle = displayedItem.querySelector('.gallery__item__title').innerHTML;
+          console.log(itemTitle + "itemTitle");
+
+          var itemCaption = displayedItem.querySelector('.gallery__item__caption').innerHTML;
+          var popUpTitle = popUp.querySelector('.gallery-pop-up__title');
+          var popUpCaption = popUp.querySelector('.gallery-pop-up__caption');
+
+          popUpTitle.innerHTML = itemTitle;
+          popUpCaption.innerHTML = itemCaption;
         }
+
+
       });
     }
 
