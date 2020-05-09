@@ -1,18 +1,90 @@
-@media only screen and (max-width: 960px) {
+@media only screen and (max-width: 1300px) {
+  .gallery {
+    &__item {
+      width: 33.33%;
+    }
+  }
+}
 
+@media only screen and (max-width: 900px) {
+  .gallery {
+    margin-bottom: 70px;
+    padding: 0 5%;
+    &__item {
+      padding: 40px 34px 60px;
+    }
+  }
+  .tab, .header {
+    padding: 0 5%;
+  }
+  h2, .title-2 {
+    margin: 0;
+    font-size: 20px;
+  }
+  .header .nav .list__item {
+    width: 110px;
+    margin: 18px 10px;
+  }
 }
 
 @media only screen and (max-width: 640px) {
   h1, .title-1 {
     font-size: 60px;
   }
+  h3, .title-3 {
+    font-size: 30px;
+  }
+  p, .body-regular {
+    font-size: 22px;
+  }
+  h5, .title-5 {
+    font-size: 20px;
+  }
   .tab, .header {
     padding: 0 5%;
+  }
+  .gallery {
+    padding: 0 5%;
+    margin-bottom: 40px;
+    &__item {
+      width: 50%;
+      padding: 40px 24px 40px;
+    }
+  }
+  .gallery-pop-up {
+    &__exit-btn {
+      position: absolute;
+      top: 20px;
+      right: 8%;
+    }
   }
 }
 
 @media only screen and (max-width: 470px) {
   h1, .title-1 {
-    font-size: 45px;
+    font-size: 55px;
+  }
+  h3, .title-3 {
+    font-size: 34px;
+  }
+  .gallery {
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  h1, .title-1 {
+    font-size: 47px;
+  }
+  h3, .title-3 {
+    font-size: 27px;
+  }
+  .gallery {
+    padding: 0 10%;
+    margin-bottom: 30px;
+    &__item {
+      width: 50%;
+      padding: 20px 14px 30px;
+    }
   }
 }
