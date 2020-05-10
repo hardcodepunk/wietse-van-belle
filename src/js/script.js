@@ -40,7 +40,6 @@ document.addEventListener('DOMContentLoaded',function(event){
     });
   }
 
-
   /*
    * gallery
    */
@@ -55,7 +54,6 @@ document.addEventListener('DOMContentLoaded',function(event){
     var btnClosePopUp = document.querySelector('#close-pop-up');
 
     var projection = document.getElementById('projection');
-    console.log(projection + "projection el");
 
     // activate popup
     function openPopUp() {
@@ -81,7 +79,9 @@ document.addEventListener('DOMContentLoaded',function(event){
 
       // replace popup img src with clicked item img src
       projection.src = this.getAttribute('data-img');
-
+       setTimeout(function(){
+         projection.classList.add('is-being-displayed');
+       }, 1000);
       // replace popup title/text with clicked item title/text
       var itemTitle = this.querySelector('.gallery__item__title').innerHTML;
       var itemCaption = this.querySelector('.gallery__item__caption').innerHTML;
@@ -90,9 +90,6 @@ document.addEventListener('DOMContentLoaded',function(event){
 
       popUpTitle.innerHTML = itemTitle;
       popUpCaption.innerHTML = itemCaption;
-
-      console.log(currentLocation);
-
     }
 
     // add click event onto gallery items
@@ -103,6 +100,8 @@ document.addEventListener('DOMContentLoaded',function(event){
     // deactivate popup
     function closePopUp() {
       bodyEl.classList.remove('has-active-popup');
+      projection.classList.remove('is-being-displayed');
+
       for (var i = 0; i < galleryItems.length; i++) {
         galleryItems[i].classList.remove('is-being-displayed');
       };
@@ -129,16 +128,11 @@ document.addEventListener('DOMContentLoaded',function(event){
 
       galleryBtns[i].addEventListener('click', function() {
 
-        console.log(currentLocation + " before assigned by displ item");
-
         var displayedItem = document.querySelector('li.gallery__item.is-being-displayed');
         var currentLocation = itemsArray.indexOf(displayedItem);
 
-        console.log(currentLocation + " after assigned by displ item");
-
         // prev btn clicked
         if (this == btnPrevious) {
-          console.log("click prev");
 
           currentLocation -= 1;
           paginationElementCurrent.innerHTML = currentLocation;
@@ -151,23 +145,17 @@ document.addEventListener('DOMContentLoaded',function(event){
 
           if (currentLocation <= 0) {
             btnPrevious.classList.add('is-hidden');
-            console.log("smaller than minimum so should be hidden");
           } else {
             btnNext.classList.remove('is-hidden');
           }
 
-          console.log(currentLocation);
-
-          ///////////////
           var displayedItem = document.querySelector('li.gallery__item.is-being-displayed');
 
           // replace popup img src with clicked item img src
           projection.src = displayedItem.getAttribute('data-img');
 
-          console.log(projection.src + "project src");
           // replace popup title/text with clicked item title/text
           var itemTitle = displayedItem.querySelector('.gallery__item__title').innerHTML;
-          console.log(itemTitle + "itemTitle");
 
           var itemCaption = displayedItem.querySelector('.gallery__item__caption').innerHTML;
           var popUpTitle = popUp.querySelector('.gallery-pop-up__title');
@@ -178,15 +166,12 @@ document.addEventListener('DOMContentLoaded',function(event){
 
         // next btn clicked
         } else if ( this == btnNext ) {
-          console.log("click next");
 
-          console.log(currentLocation + " before process");
           currentLocation += 1;
           paginationElementCurrent.innerHTML = currentLocation;
 
           if (currentLocation >= totalItems) {
             btnNext.classList.add('is-hidden');
-            console.log("equal or greater than total so should be hidden");
           } else {
             btnPrevious.classList.remove('is-hidden');
           }
@@ -197,19 +182,13 @@ document.addEventListener('DOMContentLoaded',function(event){
           };
           galleryItems[currentLocation].classList.add('is-being-displayed');
 
-
-
-          console.log(currentLocation + " after process");
-          //////////
           var displayedItem = document.querySelector('li.gallery__item.is-being-displayed');
 
           // replace popup img src with clicked item img src
           projection.src = displayedItem.getAttribute('data-img');
 
-          console.log(projection.src + "project src");
           // replace popup title/text with clicked item title/text
           var itemTitle = displayedItem.querySelector('.gallery__item__title').innerHTML;
-          console.log(itemTitle + "itemTitle");
 
           var itemCaption = displayedItem.querySelector('.gallery__item__caption').innerHTML;
           var popUpTitle = popUp.querySelector('.gallery-pop-up__title');
@@ -218,82 +197,10 @@ document.addEventListener('DOMContentLoaded',function(event){
           popUpTitle.innerHTML = itemTitle;
           popUpCaption.innerHTML = itemCaption;
         }
-
-
       });
     }
 
     // click close button
     btnClosePopUp.addEventListener('click', closePopUp);
   })();
-
-  // click gallery item
-   // open overlay
-   // replace img src/title/text with clicked items img src/title/text
-
-  // if overlay active
-    // click left button
-      // get previous gallery item
-      // replace img src/title/text with clicked items img src/title/text
-    // click right button
-      // get next gallery item
-      // replace img src/title/text with clicked items img src/title/text
-
-
-
-
 });
-
-/* for (var i = 0; i < galleryBtns.length; i++) {
-
-  galleryBtns[i].addEventListener('click', function() {
-
-    var displayedItem = document.querySelector('li.gallery__item.is-being-displayed');
-
-    // prev btn clicked
-    if (this == btnPrevious) {
-      console.log("click prev");
-
-      var previousItem = displayedItem.previousElementSibling;
-
-      displayedItem.classList.remove('is-being-displayed');
-      previousItem.classList.add('is-being-displayed');
-
-      //sliderProjection.src = previousItem.querySelector('.shop-item__gallery__item__visual__img').src;
-
-      if (previousItem.previousElementSibling == null) {
-        btnPrevious.classList.add('is-hidden');
-      }
-
-      if (btnNext.classList.contains('is-hidden')) {
-        btnNext.classList.remove('is-hidden');
-      }
-
-      currentLocation -= 1;
-
-      //paginationElementCurrent.innerHTML = currentLocation;
-
-    // next btn clicked
-    } else if ( this == btnNext ) {
-      console.log("click next");
-
-      var nextItem = displayedItem.nextElementSibling;
-
-      displayedItem.classList.remove('is-being-displayed');
-      nextItem.classList.add('is-being-displayed');
-
-      //sliderProjection.src = nextItem.querySelector('.shop-item__gallery__item__visual__img').src;
-
-      if ( nextItem.nextElementSibling == null ) {
-        btnNext.classList.add('is-hidden');
-      }
-
-      if (btnPrevious.classList.contains('is-hidden')) {
-        btnPrevious.classList.remove('is-hidden');
-      }
-
-      currentLocation += 1;
-      //paginationElementCurrent.innerHTML = currentLocation;
-    }
-  });
-} */
