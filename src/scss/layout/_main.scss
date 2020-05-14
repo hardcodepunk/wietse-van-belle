@@ -429,7 +429,9 @@
   &__image {
     margin-bottom: 70px;
     opacity: 0;
-    transition: all 0.4s ease-out;
+    &:not(.is-being-displayed) {
+      transition: all 0.4s ease-out;
+    }
     &.is-being-displayed {
       opacity: 1;
     }

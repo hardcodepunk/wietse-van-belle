@@ -61,6 +61,15 @@ document.addEventListener('DOMContentLoaded',function(event){
       bodyEl.classList.add('has-active-popup');
       this.classList.add('is-being-displayed');
 
+      // Create a new element
+      var newCaption = document.createElement('p');
+      newCaption.id = "gallery-pop-up__caption";
+      // Get the reference node
+      var referenceNode = document.querySelector('#reference-for-caption');
+
+      // Insert the new node before the reference node
+      referenceNode.after(newCaption);
+
       var currentLocation = itemsArray.indexOf(this);
 
       paginationElementCurrent.innerHTML = currentLocation;
@@ -79,17 +88,31 @@ document.addEventListener('DOMContentLoaded',function(event){
 
       // replace popup img src with clicked item img src
       projection.src = this.getAttribute('data-img');
-       setTimeout(function(){
-         projection.classList.add('is-being-displayed');
-       }, 1000);
+      setTimeout(function(){
+       projection.classList.add('is-being-displayed');
+      }, 100);
       // replace popup title/text with clicked item title/text
       var itemTitle = this.querySelector('.gallery__item__title').innerHTML;
       var itemCaption = this.querySelector('.gallery__item__caption').innerHTML;
       var popUpTitle = popUp.querySelector('.gallery-pop-up__title');
-      var popUpCaption = popUp.querySelector('.gallery-pop-up__caption');
+      var popUpCaption = document.getElementById('gallery-pop-up__caption');
 
       popUpTitle.innerHTML = itemTitle;
-      popUpCaption.innerHTML = itemCaption;
+      popUpCaption.innerHTML = "";
+
+      var i = 0;
+      var speed = 40;
+
+      function typeWriter() {
+        if (i < itemCaption.length) {
+          popUpCaption.innerHTML += itemCaption.charAt(i);
+          i++;
+          setTimeout(typeWriter, speed);
+        }
+      }
+
+      typeWriter();
+
     }
 
     // add click event onto gallery items
@@ -101,6 +124,7 @@ document.addEventListener('DOMContentLoaded',function(event){
     function closePopUp() {
       bodyEl.classList.remove('has-active-popup');
       projection.classList.remove('is-being-displayed');
+      document.getElementById("gallery-pop-up__caption").remove();
 
       for (var i = 0; i < galleryItems.length; i++) {
         galleryItems[i].classList.remove('is-being-displayed');
@@ -130,9 +154,21 @@ document.addEventListener('DOMContentLoaded',function(event){
 
         var displayedItem = document.querySelector('li.gallery__item.is-being-displayed');
         var currentLocation = itemsArray.indexOf(displayedItem);
+        projection.classList.remove('is-being-displayed');
 
         // prev btn clicked
         if (this == btnPrevious) {
+
+          document.getElementById("gallery-pop-up__caption").remove();
+
+          // Create a new element
+          var newCaption = document.createElement('p');
+          newCaption.id = "gallery-pop-up__caption";
+          // Get the reference node
+          var referenceNode = document.querySelector('#reference-for-caption');
+
+          // Insert the new node before the reference node
+          referenceNode.after(newCaption);
 
           currentLocation -= 1;
           paginationElementCurrent.innerHTML = currentLocation;
@@ -153,19 +189,46 @@ document.addEventListener('DOMContentLoaded',function(event){
 
           // replace popup img src with clicked item img src
           projection.src = displayedItem.getAttribute('data-img');
+          setTimeout(function(){
+           projection.classList.add('is-being-displayed');
+          }, 100);
 
           // replace popup title/text with clicked item title/text
           var itemTitle = displayedItem.querySelector('.gallery__item__title').innerHTML;
 
           var itemCaption = displayedItem.querySelector('.gallery__item__caption').innerHTML;
           var popUpTitle = popUp.querySelector('.gallery-pop-up__title');
-          var popUpCaption = popUp.querySelector('.gallery-pop-up__caption');
+          var popUpCaption = document.getElementById('gallery-pop-up__caption');
 
           popUpTitle.innerHTML = itemTitle;
-          popUpCaption.innerHTML = itemCaption;
+          popUpCaption.innerHTML = "";
+
+          var i = 0;
+          var speed = 40;
+
+          function typeWriter() {
+            if (i < itemCaption.length) {
+              popUpCaption.innerHTML += itemCaption.charAt(i);
+              i++;
+              setTimeout(typeWriter, speed);
+            }
+          }
+
+          typeWriter();
 
         // next btn clicked
         } else if ( this == btnNext ) {
+
+          document.getElementById("gallery-pop-up__caption").remove();
+
+          // Create a new element
+          var newCaption = document.createElement('p');
+          newCaption.id = "gallery-pop-up__caption";
+          // Get the reference node
+          var referenceNode = document.querySelector('#reference-for-caption');
+
+          // Insert the new node before the reference node
+          referenceNode.after(newCaption);
 
           currentLocation += 1;
           paginationElementCurrent.innerHTML = currentLocation;
@@ -186,17 +249,34 @@ document.addEventListener('DOMContentLoaded',function(event){
 
           // replace popup img src with clicked item img src
           projection.src = displayedItem.getAttribute('data-img');
+          setTimeout(function(){
+           projection.classList.add('is-being-displayed');
+          }, 100);
 
           // replace popup title/text with clicked item title/text
           var itemTitle = displayedItem.querySelector('.gallery__item__title').innerHTML;
 
           var itemCaption = displayedItem.querySelector('.gallery__item__caption').innerHTML;
           var popUpTitle = popUp.querySelector('.gallery-pop-up__title');
-          var popUpCaption = popUp.querySelector('.gallery-pop-up__caption');
+          var popUpCaption = document.getElementById('gallery-pop-up__caption');
 
           popUpTitle.innerHTML = itemTitle;
-          popUpCaption.innerHTML = itemCaption;
+          popUpCaption.innerHTML = "";
+
+          var i = 0;
+          var speed = 40;
+
+          function typeWriter(e) {
+            if (i < itemCaption.length) {
+              popUpCaption.innerHTML += itemCaption.charAt(i);
+              i++;
+              setTimeout(typeWriter, speed);
+            }
+          }
+
+          typeWriter();
         }
+
       });
     }
 
