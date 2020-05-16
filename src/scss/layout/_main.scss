@@ -429,6 +429,7 @@
   &__image {
     margin-bottom: 70px;
     opacity: 0;
+    max-height: 256px;
     &:not(.is-being-displayed) {
       transition: all 0.4s ease-out;
     }
