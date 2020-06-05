@@ -171,6 +171,35 @@
   }
 }
 
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  &__top {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid $blue;
+  }
+  &__top {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: $red;
+  }
+  &__bottom {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid $blue;
+  }
+
+}
+
 /*
  * components
  */
@@ -524,6 +553,6 @@
   }
   &__pagination {
     @include translateX();
-    bottom: 40px;
+    top: 40px;
   }
 }
