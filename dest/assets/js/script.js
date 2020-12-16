@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded',function(event){
 
       // Create a new element
       var newCaption = document.createElement('p');
-      newCaption.id = "gallery-pop-up__caption";
+      newCaption.id = "pop-up__gallery__caption";
       // Get the reference node
       var referenceNode = document.querySelector('#reference-for-caption');
 
@@ -94,8 +94,8 @@ document.addEventListener('DOMContentLoaded',function(event){
       // replace popup title/text with clicked item title/text
       var itemTitle = this.querySelector('.gallery__item__title').innerHTML;
       var itemCaption = this.querySelector('.gallery__item__caption').innerHTML;
-      var popUpTitle = popUp.querySelector('.gallery-pop-up__title');
-      var popUpCaption = document.getElementById('gallery-pop-up__caption');
+      var popUpTitle = popUp.querySelector('.pop-up__gallery__title');
+      var popUpCaption = document.getElementById('pop-up__gallery__caption');
 
       popUpTitle.innerHTML = itemTitle;
       popUpCaption.innerHTML = "";
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded',function(event){
     function closePopUp() {
       bodyEl.classList.remove('has-active-popup');
       projection.classList.remove('is-being-displayed');
-      document.getElementById("gallery-pop-up__caption").remove();
+      document.getElementById("pop-up__gallery__caption").remove();
 
       for (var i = 0; i < galleryItems.length; i++) {
         galleryItems[i].classList.remove('is-being-displayed');
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded',function(event){
 
     //pop up nav
 
-    var galleryBtns = document.querySelectorAll('.gallery-pop-up__nav');
+    var galleryBtns = document.querySelectorAll('.pop-up__gallery__nav');
     var btnPrevious = document.getElementById('gallery__btn-previous');
     var btnNext = document.getElementById('gallery__btn-next');
 
@@ -141,8 +141,8 @@ document.addEventListener('DOMContentLoaded',function(event){
 
     var itemsArray = Array.prototype.slice.call(galleryItems);
     var totalItems = galleryItems.length - 1;
-    var paginationElementTotal = document.getElementById('gallery-pop-up__pagination__total');
-    var paginationElementCurrent = document.getElementById('gallery-pop-up__pagination__current');
+    var paginationElementTotal = document.getElementById('pop-up__gallery__pagination__total');
+    var paginationElementCurrent = document.getElementById('pop-up__gallery__pagination__current');
 
     // initiate count in pagination
     paginationElementCurrent.innerHTML = currentLocation;
@@ -159,11 +159,11 @@ document.addEventListener('DOMContentLoaded',function(event){
         // prev btn clicked
         if (this == btnPrevious) {
 
-          document.getElementById("gallery-pop-up__caption").remove();
+          document.getElementById("pop-up__gallery__caption").remove();
 
           // Create a new element
           var newCaption = document.createElement('p');
-          newCaption.id = "gallery-pop-up__caption";
+          newCaption.id = "pop-up__gallery__caption";
           // Get the reference node
           var referenceNode = document.querySelector('#reference-for-caption');
 
@@ -197,8 +197,8 @@ document.addEventListener('DOMContentLoaded',function(event){
           var itemTitle = displayedItem.querySelector('.gallery__item__title').innerHTML;
 
           var itemCaption = displayedItem.querySelector('.gallery__item__caption').innerHTML;
-          var popUpTitle = popUp.querySelector('.gallery-pop-up__title');
-          var popUpCaption = document.getElementById('gallery-pop-up__caption');
+          var popUpTitle = popUp.querySelector('.pop-up__gallery__title');
+          var popUpCaption = document.getElementById('pop-up__gallery__caption');
 
           popUpTitle.innerHTML = itemTitle;
           popUpCaption.innerHTML = "";
@@ -219,11 +219,11 @@ document.addEventListener('DOMContentLoaded',function(event){
         // next btn clicked
         } else if ( this == btnNext ) {
 
-          document.getElementById("gallery-pop-up__caption").remove();
+          document.getElementById("pop-up__gallery__caption").remove();
 
           // Create a new element
           var newCaption = document.createElement('p');
-          newCaption.id = "gallery-pop-up__caption";
+          newCaption.id = "pop-up__gallery__caption";
           // Get the reference node
           var referenceNode = document.querySelector('#reference-for-caption');
 
@@ -257,8 +257,8 @@ document.addEventListener('DOMContentLoaded',function(event){
           var itemTitle = displayedItem.querySelector('.gallery__item__title').innerHTML;
 
           var itemCaption = displayedItem.querySelector('.gallery__item__caption').innerHTML;
-          var popUpTitle = popUp.querySelector('.gallery-pop-up__title');
-          var popUpCaption = document.getElementById('gallery-pop-up__caption');
+          var popUpTitle = popUp.querySelector('.pop-up__gallery__title');
+          var popUpCaption = document.getElementById('pop-up__gallery__caption');
 
           popUpTitle.innerHTML = itemTitle;
           popUpCaption.innerHTML = "";

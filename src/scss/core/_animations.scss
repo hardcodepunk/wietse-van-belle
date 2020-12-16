@@ -53,3 +53,15 @@
     right: -3px;
   }
 }
+
+@keyframes floatUpDown {
+  50% {
+    transform: translate(0, 4px);
+  }
+}
+
+@keyframes floatDownUp {
+  50% {
+    transform: translate(0, -4px);
+  }
+}
