@@ -74,7 +74,11 @@
   <div class="gallery">
     <h3 class="gallery__title">Projects</h3>
     <ul class="list list--horizontal">
-      <li class="gallery__item" data-img="assets/img/deer.gif">
+      <li class="gallery__item"
+        data-img="assets/img/deer.gif"
+        data-article-img-1="assets/img/mockup.jpg"
+        data-article-img-caption-1="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id placerat est. Maecenas venenatis gravida turpis eget mattis. Curabitur id auctor sem, sed lobortis augue."
+      >
         <div class="gallery__item__visual bordered">
           <img class="gallery__item__img" src="assets/img/deer.gif"/>
           <div class="bordered__corner bordered__corner--left-up"></div>
@@ -85,7 +89,11 @@
         <h4 class="gallery__item__title">Forest</h4>
         <p class="gallery__item__caption">A mysterious forest and its inhabitants.</p>
       </li>
-      <li class="gallery__item" data-img="assets/img/blood-drop__splash.gif">
+      <li class="gallery__item"
+        data-img="assets/img/blood-drop__splash.gif"
+        data-article-img-1="assets/img/mockup.jpg"
+        data-article-img-caption-1="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id placerat est. Maecenas venenatis gravida turpis eget mattis. Curabitur id auctor sem, sed lobortis augue."
+      >
         <div class="gallery__item__visual bordered">
           <img class="gallery__item__img" src="assets/img/blood-drop__chill.gif"/>
           <div class="bordered__corner bordered__corner--left-up"></div>
@@ -96,7 +104,11 @@
         <h4 class="gallery__item__title">Ludum Dare 43</h4>
         <p class="gallery__item__caption">My Ludum Dare 43 jam entry.</p>
       </li>
-      <li class="gallery__item" data-img="assets/img/chairman.gif">
+      <li class="gallery__item"
+        data-img="assets/img/chairman.gif"
+        data-article-img-1="assets/img/mockup.jpg"
+        data-article-img-caption-1="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id placerat est. Maecenas venenatis gravida turpis eget mattis. Curabitur id auctor sem, sed lobortis augue."
+      >
         <div class="gallery__item__visual bordered">
           <img class="gallery__item__img" src="assets/img/chairman.gif"/>
           <div class="bordered__corner bordered__corner--left-up"></div>
@@ -125,40 +137,42 @@
   </div>
 </section>
 <!-- gallery pop up -->
-<div id="pop-up" class="pop-up"> 
+<div id="pop-up" class="pop-up">
   <div class="pop-up__gallery">
-    <div class="pop-up__gallery__pagination"><span id="pop-up__gallery__pagination__current"></span>/<span id="pop-up__gallery__pagination__total"></span></div>
-    <div id="gallery__btn-previous" class="pop-up__gallery__nav pop-up__gallery__nav--left-button">
-      <div class="pop-up__gallery__nav__triangle">
-        <div class="pop-up__gallery__nav__triangle__corner pop-up__gallery__nav__triangle__corner--left-up"></div>
-        <div class="pop-up__gallery__nav__triangle__corner pop-up__gallery__nav__triangle__corner--left-bottom"></div>
+    <div class="pop-up__gallery__viewer">
+      <div class="pop-up__gallery__pagination"><span id="pop-up__gallery__pagination__current"></span>/<span id="pop-up__gallery__pagination__total"></span></div>
+      <div id="gallery__btn-previous" class="pop-up__gallery__nav pop-up__gallery__nav--left-button">
+        <div class="pop-up__gallery__nav__triangle">
+          <div class="pop-up__gallery__nav__triangle__corner pop-up__gallery__nav__triangle__corner--left-up"></div>
+          <div class="pop-up__gallery__nav__triangle__corner pop-up__gallery__nav__triangle__corner--left-bottom"></div>
+        </div>
+        <div class="pop-up__gallery__nav__triangle">
+          <div class="pop-up__gallery__nav__triangle__corner pop-up__gallery__nav__triangle__corner--left-up"></div>
+          <div class="pop-up__gallery__nav__triangle__corner pop-up__gallery__nav__triangle__corner--left-bottom"></div>
+        </div>
       </div>
-      <div class="pop-up__gallery__nav__triangle">
-        <div class="pop-up__gallery__nav__triangle__corner pop-up__gallery__nav__triangle__corner--left-up"></div>
-        <div class="pop-up__gallery__nav__triangle__corner pop-up__gallery__nav__triangle__corner--left-bottom"></div>
+      <div id="gallery__btn-next" class="pop-up__gallery__nav pop-up__gallery__nav--right-button">
+        <div class="pop-up__gallery__nav__triangle">
+          <div class="pop-up__gallery__nav__triangle__corner pop-up__gallery__nav__triangle__corner--left-up"></div>
+          <div class="pop-up__gallery__nav__triangle__corner pop-up__gallery__nav__triangle__corner--left-bottom"></div>
+        </div>
+        <div class="pop-up__gallery__nav__triangle">
+          <div class="pop-up__gallery__nav__triangle__corner pop-up__gallery__nav__triangle__corner--left-up"></div>
+          <div class="pop-up__gallery__nav__triangle__corner pop-up__gallery__nav__triangle__corner--left-bottom"></div>
+        </div>
       </div>
-    </div>
-    <div id="gallery__btn-next" class="pop-up__gallery__nav pop-up__gallery__nav--right-button">
-      <div class="pop-up__gallery__nav__triangle">
-        <div class="pop-up__gallery__nav__triangle__corner pop-up__gallery__nav__triangle__corner--left-up"></div>
-        <div class="pop-up__gallery__nav__triangle__corner pop-up__gallery__nav__triangle__corner--left-bottom"></div>
+      <div id="close-pop-up" class="pop-up__gallery__exit-btn"></div>
+      <img id="projection" class="pop-up__gallery__image"/>
+      <h3 id="reference-for-caption" class="pop-up__gallery__title"></h3>
+      <div class="scroll-indicator">
+        <div class="scroll-indicator__top"></div>
+        <div class="scroll-indicator__middle"></div>
+        <div class="scroll-indicator__bottom"></div>
       </div>
-      <div class="pop-up__gallery__nav__triangle">
-        <div class="pop-up__gallery__nav__triangle__corner pop-up__gallery__nav__triangle__corner--left-up"></div>
-        <div class="pop-up__gallery__nav__triangle__corner pop-up__gallery__nav__triangle__corner--left-bottom"></div>
-      </div>
-    </div>
-    <div id="close-pop-up" class="pop-up__gallery__exit-btn"></div>
-    <img id="projection" class="pop-up__gallery__image"/>
-    <h3 id="reference-for-caption" class="pop-up__gallery__title"></h3>
-    <div class="scroll-indicator">
-      <div class="scroll-indicator__top"></div>
-      <div class="scroll-indicator__middle"></div>
-      <div class="scroll-indicator__bottom"></div>
     </div>
     <article class="article">
-      <img src="assets/img/mockup.jpg" class="article__img"/>
-      <p class="article__caption">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id placerat est. Maecenas venenatis gravida turpis eget mattis. Curabitur id auctor sem, sed lobortis augue.</p>
+      <img id="article-img-1" class="article__img"/>
+      <p id="article-caption-1" class="article__caption"></p>
     </article>
   </div>
 </div>
